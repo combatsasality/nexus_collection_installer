@@ -30,6 +30,8 @@ The tool requires your Nexus Mods session cookies to authenticate downloads. You
 2. Open Developer Tools (`F12`) → **Application** tab → **Cookies** → `https://www.nexusmods.com`.
 3. Create a `cookies.json` file in the project root with the following format:
 
+You need cookies named `nexusmods_session` and `nexusmods_session_refresh`.
+
 ```json
 [
   { "name": "cookie_name_1", "value": "cookie_value_1" },
