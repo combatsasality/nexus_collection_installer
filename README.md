@@ -34,8 +34,8 @@ You need cookies named `nexusmods_session` and `nexusmods_session_refresh`.
 
 ```json
 [
-  { "name": "cookie_name_1", "value": "cookie_value_1" },
-  { "name": "cookie_name_2", "value": "cookie_value_2" }
+  { "name": "nexusmods_session", "value": "cookie_value_1" },
+  { "name": "nexusmods_session_refresh", "value": "cookie_value_2" }
 ]
 ```
 

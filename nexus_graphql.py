@@ -41,7 +41,7 @@ fragment ModFileFields on ModFile {
 
 
 class NexusModsGraphql:
-    def __init__(self):
+    def __init__(self, cookies_path: str = "cookies.json"):
         self.graphql_url = "https://api-router.nexusmods.com/graphql/"
         self.headers = {
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
@@ -49,6 +49,15 @@ class NexusModsGraphql:
             "Referer": "https://www.nexusmods.com/",
             "Content-Type": "application/json",
         }
+        self.cookies = self._load_cookies(cookies_path)
+
+    def _load_cookies(self, cookies_path: str) -> dict:
+        try:
+            with open(cookies_path, "r") as f:
+                cookies_list = json.load(f)
+            return {cookie["name"]: cookie["value"] for cookie in cookies_list}
+        except (FileNotFoundError, json.JSONDecodeError, KeyError):
+            return {}
 
     def _get_raw_data(self, url_collection: str) -> dict:
         url_collection = url_collection.lower().replace("https://", "")
@@ -68,7 +77,9 @@ class NexusModsGraphql:
             self.graphql_url,
             data=json.dumps(formatted_json),
             headers=self.headers,
+            cookies=self.cookies,
         )
+
         return response.json()
 
     def get_mods(self, url_collection: str) -> list:
