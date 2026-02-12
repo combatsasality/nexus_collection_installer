@@ -47,7 +47,7 @@ python main.py
 
 1. The program will prompt you to enter a Nexus Mods collection URL, e.g.:
    ```
-   https://next.nexusmods.com/skyrimspecialedition/collections/abcdef
+   https://nexusmods.com/skyrimspecialedition/collections/abcdef
    ```
 2. Chrome will open, load your cookies, and begin downloading each mod file automatically.
 3. When the first mod starts downloading, you need allow the browser to always open Vortex (click "Always allow") so subsequent downloads are handled automatically.
